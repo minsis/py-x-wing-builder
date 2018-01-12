@@ -79,8 +79,6 @@ class xwb(object):
         elif xws["version"] > self.xws_version:
             errors.append("XWS data version {} is newer than {}.".format(xws["version"], self.xws_version))
 
-        xws["version"] = self.xws_version
-
         # Remove any ignored items in the main squadron container.
         for prop in container_ignored_props:
             if prop in xws:
@@ -90,6 +88,9 @@ class xwb(object):
                 #    continue
 
                 xws.pop(prop)
+
+        xws["points"] = 0
+        xws["version"] = self.xws_version
 
         # lets check to make sure we have valid pilots and ships
         for pilot in range(len(xws["pilots"])):
@@ -155,6 +156,8 @@ class xwb(object):
                         total_points += xwing_data_upgrades[upgrades.index(upgrade)]["points"]
 
             xws["pilots"][pilot]["points"] = xwing_data_pilots[pilots.index(xws["pilots"][pilot]["name"])]["points"] + total_points
+
+            xws["points"] += xws["pilots"][pilot]["points"]
 
         if self.vendor_key and ("vendor" not in xws) and (len(self.vendor_kw) != 0):
             xws["vendor"] = { self.vendor_key : {} }
