@@ -31,15 +31,15 @@ class xwing_data:
         if not schema_files_path:
             schema_files_path = join(realpath(__file__).rsplit("/", 1)[0], "xwing-data", "schemas")
 
-        self.conditions = json.loads(open(join(data_files_path, "conditions.js")).read())
-        self.damage_deck_core_tfa = json.loads(open(join(data_files_path, "damage-deck-core-tfa.js")).read())
-        self.damage_deck_core = json.loads(open(join(data_files_path, "damage-deck-core.js")).read())
-        self.damage_deck_rebel_transport = json.loads(open(join(data_files_path, "damage-deck-rebel-transport.js")).read())
-        self.pilots = json.loads(open(join(data_files_path, "pilots.js")).read())
+        self.conditions = json.loads(open(join(data_files_path, "conditions.js"), encoding = "utf-8").read())
+        self.damage_deck_core_tfa = json.loads(open(join(data_files_path, "damage-deck-core-tfa.js"), encoding = "utf-8").read())
+        self.damage_deck_core = json.loads(open(join(data_files_path, "damage-deck-core.js"), encoding = "utf-8").read())
+        self.damage_deck_rebel_transport = json.loads(open(join(data_files_path, "damage-deck-rebel-transport.js"), encoding = "utf-8").read())
+        self.pilots = json.loads(open(join(data_files_path, "pilots.js"), encoding = "utf-8").read())
         self.reference_cards = json.loads(open(join(data_files_path, "conditions.js")).read())
-        self.ships = json.loads(open(join(data_files_path, "ships.js")).read())
-        self.sources = json.loads(open(join(data_files_path, "sources.js")).read())
-        self.upgrades = json.loads(open(join(data_files_path, "upgrades.js")).read())
+        self.ships = json.loads(open(join(data_files_path, "ships.js"), encoding = "utf-8").read())
+        self.sources = json.loads(open(join(data_files_path, "sources.js"), encoding = "utf-8").read())
+        self.upgrades = json.loads(open(join(data_files_path, "upgrades.js"), encoding = "utf-8").read())
 
         self.to_xws_slot_name = { "Astromech" : "amd",  "Bomb" : "bomb", "Cannon" : "cannon", "Cargo" : "cargo", "Crew" : "crew",
                                "Elite" : "ept", "Hardpoint" : "hardpoint", "Illicit" : "illicit", "Missile" : "missile", "Modification" : "mod",

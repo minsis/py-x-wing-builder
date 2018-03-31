@@ -195,7 +195,7 @@ class xwb(object):
         # see if the source a file, if not check to see if its a URL
         if exists(schema_source):
             try:
-                schema = json.loads(open(schema_source, "r").read())
+                schema = json.loads(open(schema_source, "r", encoding = "utf-8").read())
             except:
                 raise ValueError("Unable to load schema from file {}".format(schema_source))
 
